@@ -3,22 +3,23 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
  
 
-class Users extends Component {
+class Users extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
          users:[]
       }
+      this.delta.bind(this);
+
    }
 
-
-   componentDidMount () {
+   delta() {
     axios.get('/getUsers')
     .then(function (response) {
-
-        this.setState({
+ 
+         this.setState({
             users: response.data
-         });
+        });
          console.log(this.users);
 
     })
@@ -27,16 +28,14 @@ class Users extends Component {
     });
    }
 
+ 
+
 render() {
     return (
         <div className="container">
             <div className="row justify-content-center">
-                {users.map((user,id ) => (
-                       <div className="col-md-12">
-                       <h1>{user.name}</h1>
-                      </div>
-                ))}
-                
+            
+                <button onClick={this.delta}>Get</button>
             </div>
         </div>
     )

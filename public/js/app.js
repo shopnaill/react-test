@@ -2314,8 +2314,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Users = /*#__PURE__*/function (_Component) {
-  _inherits(Users, _Component);
+var Users = /*#__PURE__*/function (_React$Component) {
+  _inherits(Users, _React$Component);
 
   var _super = _createSuper(Users);
 
@@ -2328,12 +2328,15 @@ var Users = /*#__PURE__*/function (_Component) {
     _this.state = {
       users: []
     };
+
+    _this.delta.bind(_assertThisInitialized(_this));
+
     return _this;
   }
 
   _createClass(Users, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "delta",
+    value: function delta() {
       axios__WEBPACK_IMPORTED_MODULE_2___default().get('/getUsers').then(function (response) {
         this.setState({
           users: response.data
@@ -2350,13 +2353,9 @@ var Users = /*#__PURE__*/function (_Component) {
         className: "container",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "row justify-content-center",
-          children: users.map(function (user, id) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "col-md-12",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-                children: user.name
-              })
-            });
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            onClick: this.delta,
+            children: "Get"
           })
         })
       });
